@@ -16,6 +16,13 @@ npm install
 npm run build
 ```
 
+Rust dependencies
+
+```bash
+cargo install cargo-leptos
+rustup target add wasm32-unknown-unknown
+```
+
 Start leptos server
 
 ```bash
@@ -40,9 +47,15 @@ npm run watch
 
 - Blog page and render `md` file
 
+- Demo page:
+
+  - (Topaz)[https://www.topazlabs.com/]
+
 - About page:
 
   - Github link
   - mokeytype link
 
 - Style Guide
+
+- Docker

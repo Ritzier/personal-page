@@ -4,7 +4,7 @@ use leptos_use::{
     UseColorModeReturn,
 };
 
-use super::svg_icons::ThickIcon;
+use super::svg_icons::{ThemeIcon, ThickIcon};
 
 #[component]
 pub fn NavBar() -> impl IntoView {
@@ -48,49 +48,36 @@ pub fn NavBar() -> impl IntoView {
 
 #[component]
 fn ColorschemeButton() -> impl IntoView {
-    // Button to show the popup page
+    //! Icon, Button call <ColorschemePopupPage/>
     let (show_popup, set_show_popup) = create_signal(false);
     let popup_ref = create_node_ref::<Div>();
     let _ = on_click_outside(popup_ref, move |_| set_show_popup.set(false));
 
     view! {
         <button on:click=move |_| set_show_popup.set(true)>
-            <svg
-                // style="height:1em;font-size:1.5em;vertical-align:-.125em;transform-origin:center;overflow:visible"
-                style="height:0.8em;"
-                viewBox="0 0 512 512"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <g transform="translate(256 256)" transform-origin="128 0">
-                    <g transform="translate(0,0) scale(1,1)">
-                        <path
-                            d="M512 256c0 .9 0 1.8 0 2.7c-.4 36.5-33.6 61.3-70.1 61.3H344c-26.5 0-48 21.5-48 48c0 3.4 .4 6.7 1 9.9c2.1 10.2 6.5 20 10.8 29.9c6.1 13.8 12.1 27.5 12.1 42c0 31.8-21.6 60.7-53.4 62c-3.5 .1-7 .2-10.6 .2C114.6 512 0 397.4 0 256S114.6 0 256 0S512 114.6 512 256zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm0-96a32 32 0 1 0 0-64 32 32 0 1 0 0 64zM288 96a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm96 96a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"
-                            fill="currentColor"
-                            transform="translate(-256 -256)"
-                        ></path>
-                    </g>
-                </g>
-            </svg>
+            <ThemeIcon/>
         </button>
 
         <Show when=move || show_popup.get() fallback=|| ()>
             // Modol
-            <ColorschemePopupPageOne popup_ref=popup_ref set_show=set_show_popup/>
+            <ColorschemePopupPage popup_ref=popup_ref set_show=set_show_popup/>
         </Show>
     }
 }
 
 #[component]
-fn ColorschemePopupPageOne(popup_ref: NodeRef<Div>, set_show: WriteSignal<bool>) -> impl IntoView {
+fn ColorschemePopupPage(popup_ref: NodeRef<Div>, set_show: WriteSignal<bool>) -> impl IntoView {
+    //! Popup page of theme selection and make background-gray opacity-25
     let (mode, set_mode) =
         use_context::<(Signal<ColorMode>, WriteSignal<ColorMode>)>().expect("Not found ColorMode");
 
     view! {
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-25 flex items-center justify-center">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center">
             <div class="bg-ctp-base flex items-center justify-center" node_ref=popup_ref>
                 <div class="p-4 shadow-lg rounded-lg text-center rounded-lg">
-                    <h2 class="text-2xl font-bold mb-4">"Colorscheme For Experience"</h2>
+                    <h2 class="text-2xl font-bold mb-4 bg-gradient-to-r from-ctp-pink to-ctp-mauve text-transparent bg-clip-text">
+                        Colorscheme For Experience
+                    </h2>
 
                     <div class="grid grid-cols-1 gap-4 justify-center items-center">
                         <button

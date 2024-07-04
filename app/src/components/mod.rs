@@ -1,6 +1,7 @@
+mod demo;
 mod home;
 mod navbar;
-pub mod svg_icons;
 
+pub use demo::*;
 pub use home::HomePage;
 pub use navbar::NavBar;

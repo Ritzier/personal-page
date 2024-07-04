@@ -8,10 +8,10 @@
     "watch": "npx tailwindcss -i ./style/input.css -o ./style/output.css --watch"
   },
   "devDependencies": {
+    "@catppuccin/tailwindcss": "^0.1.6",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.39",
     "postcss-import": "^16.1.0",
-    "tailwindcss": "^3.4.4",
-    "@catppuccin/tailwindcss": "^0.1.6"
+    "tailwindcss": "^3.4.4"
   }
 }

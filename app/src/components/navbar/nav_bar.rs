@@ -31,6 +31,7 @@ pub fn NavBar() -> impl IntoView {
                     Logo
                 </a>
             </div>
+
             <div class="flex items-center justify-end">
                 <div class="space-x-3">
                     <a href="#">"Blog"</a>

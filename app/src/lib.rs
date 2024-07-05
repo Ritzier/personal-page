@@ -15,13 +15,12 @@ pub fn App() -> impl IntoView {
 
     view! {
         <Stylesheet id="leptos" href="/pkg/leptos-workspace.css"/>
+        <script src="/preline/preline.js"></script>
 
-        // sets the document title
-        <Title text="Welcome to Leptos"/>
+        // Global colorscheme
+        <ColorScheme/>
 
         <Body class="h-screen bg-ctp-base text-ctp-text"/>
-
-        <script src="/preline/preline.js"></script>
 
         // <Body class="bg-ctp-base"/>
         // content for this welcome page

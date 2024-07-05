@@ -7,9 +7,9 @@ use leptos_use::{
 use super::svg_icons::{ThemeIcon, ThickIcon};
 
 #[component]
-pub fn NavBar() -> impl IntoView {
-    // PAGE of Popup
-    // Colorscheme: latte, frappe, macchiato, mocha
+pub fn ColorScheme() -> impl IntoView {
+    //! Call it with:
+    //! use_context::<(Signal<ColorMode>, WriteSignal<ColorMode>)>().expect("Not found ColorMode");
     let UseColorModeReturn { mode, set_mode, .. } = use_color_mode_with_options(
         UseColorModeOptions::default()
             .cookie_enabled(true)
@@ -22,28 +22,43 @@ pub fn NavBar() -> impl IntoView {
     );
 
     provide_context((mode, set_mode));
+}
 
-    // LOGO Colorscheme Path
+#[component]
+pub fn NavBar(#[prop(default="".into())] bar_title: String) -> impl IntoView {
     view! {
-        <nav class="flex justify-between px-8 gap-4 ">
-            <div class="basis-1/4">
-                <a href="/" class="gap-12 text-white font-bold">
-                    Logo
-                </a>
-            </div>
-
-            <div class="flex items-center justify-end">
-                <div class="space-x-3">
-                    <a href="#">"Blog"</a>
-                    <a href="#">"Demo"</a>
-                    <a href="#">"About"</a>
+        <header>
+            <nav class="flex justify-between px-8 gap-4 bg-ctp-overlay1">
+                <div class="basis-1/4">
+                    <a href="/" class="gap-12 text-white font-bold">
+                        Logo
+                    </a>
                 </div>
 
-                <div class="ps-2 text-sm">
-                    <ColorschemeButton/>
+                <span>{bar_title}</span>
+
+                <div class="flex items-center justify-end">
+                    <div class="space-x-3">
+                        <a href="#">"Blog"</a>
+                        <a href="#">"Demo"</a>
+                        <a href="#">"About"</a>
+                    </div>
+
+                    <a class="inline-flex items-center" href="https://github.com/ritzier">
+                        <img
+                            src="/svg/github-mark-white.svg"
+                            alt="Github page"
+                            width="16"
+                            height="16"
+                        />
+                    </a>
+
+                    <div class="ps-2 text-sm">
+                        <ColorschemeButton/>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </header>
     }
 }
 

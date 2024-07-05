@@ -3,5 +3,5 @@ use leptos::*;
 
 #[component]
 pub fn HomePage() -> impl IntoView {
-    view! { <NavBar/> }
+    view! { <NavBar bar_title="Home".into()/> }
 }

@@ -44,15 +44,6 @@ pub fn NavBar(#[prop(default="".into())] bar_title: String) -> impl IntoView {
                         <a href="#">"About"</a>
                     </div>
 
-                    <a class="inline-flex items-center" href="https://github.com/ritzier">
-                        <img
-                            src="/svg/github-mark-white.svg"
-                            alt="Github page"
-                            width="16"
-                            height="16"
-                        />
-                    </a>
-
                     <div class="ps-2 text-sm">
                         <ColorschemeButton/>
                     </div>

@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["app", "frontend", "server"]
+members = ["app", "frontend", "server", "api"]
 
 # need to be applied only to wasm build
 [profile.release]
@@ -28,6 +28,13 @@ tokio = { version = "1.33.0", features = ["full"] }
 tower = { version = "0.4.13", features = ["full"] }
 tower-http = { version = "0.5", features = ["full"] }
 wasm-bindgen = "=0.2.92"
+
+# API
+reqwest = { version = "0.12", features = ["json"] }
+serde = "1"
+serde_json = { version = "1" }
+surrealdb = "1"
+dotenvy = "0.15"
 
 # See https://github.com/akesson/cargo-leptos for documentation of all the parameters.
 
